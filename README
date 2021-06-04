@@ -1,0 +1,21 @@
+This project contains code used to transform the data sets specified by
+
+		Salathe, M., Kazandjieva, M., Lee, J. W., Levis, P., Feldman, M. W., and Jones, J.H.
+		”A high-resolution human contact network for infectious disease transmission.” 
+		Proceedings of the National Academy of Sciences of the United States of America, 107(51),
+		22020–22025. (2010).
+		
+Into the adjacency lists ultimately used by:
+	NetworkSIR and EnvironmentalSIR: Effective, Open-Source Epidemic
+	Modeling in the Absence of Data
+	
+	and,
+	
+	NetworkSIR and EnvironmentalSIR: Two Simple Distributed
+	Mechanisms for Modeling Epidemics
+	
+All code was written by @author Madison Pickering.
+(Copyright 2020 Madison Pickering)
+
+Note that this project is licensed under the GNU Public License v3.
+Please refer to file COPYING for more information.

@@ -1,3 +1,30 @@
+/**Datahelper.java contains the main method, and
+ * reads in a file specified in the format of the data collected in
+ * ”A high-resolution human contact network for infectious disease transmission.” 
+ * and outputs it as an adjacency list. Takes a conservative approach to adding edges:
+ * if individual a has a recorded edge with b, and b does not have a recorded edge with a
+ * (based on the input file), in the output file a will be recorded as having an edge with b,
+ * and b will be recorded as having an edge with a.
+ * 
+ * @author Madison Pickering
+ * (Copyright 2020 Madison Pickering)
+ * 
+ * This file is part of EnvSIR_HiResDataHelper.
+
+    EnvSIR_HiResDataHelper is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    EnvSIR_HiResDataHelper is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with EnvSIR_HiResDataHelper.  If not, see <https://www.gnu.org/licenses/>.
+ * 
+ */
 package impl;
 
 import java.io.BufferedWriter;
@@ -50,7 +77,7 @@ public class Datahelper
 				else //lastSrc != thisSrc; start a new line
 				{
 					writer.write("\n");
-					writer.write(thisSrc + " : " + thisDest);
+					writer.write(thisSrc + " : " + thisDest + " ");
 					lastSrc = thisSrc;
 				}
 			}
@@ -81,7 +108,10 @@ public class Datahelper
 				tokenScanner.close(); //dont bother w parsing the duration token
 				
 				Edge edge = new Edge(source, dest);
+				//make it two sided
+				Edge backEdge = new Edge(dest, source);
 				edges.add(edge);
+				edges.add(backEdge);
 			}
 			lineScanner.close();
 		}
@@ -111,7 +141,7 @@ public class Datahelper
 					+ " your choice numerically (i.e, 0 for file 0)");
 			
 			for (int i = 0; i < contents.length; i++)
-				System.out.println("" + i + contents[i].getName());
+				System.out.println(i + " " + contents[i].getName());
 			
 			Scanner scan = new Scanner(System.in);
 			int index = scan.nextInt();
